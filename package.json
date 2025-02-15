@@ -1,0 +1,29 @@
+{
+  "name": "food",
+  "version": "1.0.0",
+  "description": "food web",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SonaamMourya04/EarthBites.git"
+  },
+  "author": "Sonam Mourya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SonaamMourya04/EarthBites/issues"
+  },
+  "homepage": "https://github.com/SonaamMourya04/EarthBites#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
