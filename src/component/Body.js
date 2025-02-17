@@ -49,7 +49,7 @@ const Body =()=>{
              className="filter-btn"
              onClick={()=>{
               const filteredlist=listOfRestaurants.filter(
-                (res)=>res.info.avgRating>4.5
+                (res)=>res.info.avgRating>4
               );
               setFilterRestaurant(filteredlist); // Update filtered list instead of the main list
              }}>
