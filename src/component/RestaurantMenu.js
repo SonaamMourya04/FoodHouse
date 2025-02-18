@@ -14,23 +14,23 @@ const RestaurantMenu = ()=>{
         console.log(data.json);
         setResInfo(json.data);
     };
-    const {name,
-        cuisines,
-        avgRating,
-        cloudinaryImageId,
-        costForTwo
-    }=resId?.cards[2]?.card?.card?.info;
+    // const {name,
+    //     cuisines,
+    //     avgRating,
+    //     cloudinaryImageId,
+    //     costForTwo
+    // }=resId?.cards[2]?.card?.card?.info;
 
-    if(resId.length===null)return <Shimmer/>
+    if(!resId)return <Shimmer/>
     return(
         <div className="menu">
-            <h1>{name}</h1>
+            {/* <h1>{name}</h1>
             <h4>{cuisines.join(",")}</h4>
             <h4>
                 deliveryTime
             </h4>
             <h4>deliveryTime</h4>
-            <h4>costForTwo</h4>
+            <h4>costForTwo</h4> */}
 
         </div>
     )
