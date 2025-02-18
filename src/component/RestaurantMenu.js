@@ -14,6 +14,8 @@ const RestaurantMenu = ()=>{
         console.log(data.json);
         setResInfo(json.data);
     };
+
+    
     // const {name,
     //     cuisines,
     //     avgRating,
