@@ -6,6 +6,7 @@ const RestaurantMenu = ()=>{
     useEffect(()=>{
         fetchMenu();
     },[])
+    
     const fetchMenu=async () => {
         const data =await fetch(
             "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.545246&lng=77.2941132&restaurantId=234095&catalog_qa=undefined&submitAction=ENTER"
