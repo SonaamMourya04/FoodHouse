@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 const RestaurantMenu = ()=>{
-    const[resId,setResInfo]=useState(null);
+    const[resInfo,setResInfo]=useState(null);
     
     useEffect(()=>{
         fetchMenu();
@@ -17,24 +17,18 @@ const RestaurantMenu = ()=>{
         setResInfo(json.data);
     };
 
+    if(resInfo===null)return <Shimmer/>
     
-    // const {name,
-    //     cuisines,
-    //     avgRating,
-    //     cloudinaryImageId,
-    //     costForTwo
-    // }=resId?.cards[4]?.groupedCard?.cardGroupMap.Regular.cards[2].card.itemCards;
+    const {name,cuisines,costForTwoMessage
+        
+    }=resInfo?.cards[2]?.card?.card?.info;
 
-    if(!resId)return <Shimmer/>
     return(
         <div className="menu">
-            {/* <h1>{name}</h1>
+            <h1>{name}</h1>
             <h4>{cuisines.join(",")}</h4>
-            <h4>
-                deliveryTime
-            </h4>
-            <h4>deliveryTime</h4>
-            <h4>costForTwo</h4> */}
+           
+            <h4>{costForTwoMessage}</h4>
 
         </div>
     )
