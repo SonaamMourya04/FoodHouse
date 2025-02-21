@@ -23,7 +23,7 @@ const RestaurantMenu = ()=>{
     //     avgRating,
     //     cloudinaryImageId,
     //     costForTwo
-    // }=resId?.cards[2]?.card?.card?.info;
+    // }=resId?.cards[4]?.groupedCard?.cardGroupMap.Regular.cards[2].card.itemCards;
 
     if(!resId)return <Shimmer/>
     return(
