@@ -1,36 +1,58 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-const RestaurantMenu = ()=>{
-    const[resInfo,setResInfo]=useState(null);
-    
-    useEffect(()=>{
+import { useParams } from "react-router-dom";
+import { MENU_API_URL } from "../utils/Constants";
+
+const RestaurantMenu = () => {
+    const [resInfo, setResInfo] = useState(null);
+    const {resId}=useParams();
+   
+
+    // Fetch API
+    useEffect(() => {
         fetchMenu();
-    },[]);
-    
-    
-    const fetchMenu=async () => {
-        const data =await fetch(
-            "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.545246&lng=77.2941132&restaurantId=234095&catalog_qa=undefined&submitAction=ENTER"
+    }, []);
+
+    const fetchMenu = async () => {
+        const data = await fetch(
+            MENU_API_URL + resId
+           
         );
-        const json=data.json();
-        console.log(data.json);
+        const json = await data.json();
+        console.log( json); // Log full API response
         setResInfo(json.data);
     };
 
-    if(resInfo===null)return <Shimmer/>
-    
-    const {name,cuisines,costForTwoMessage
-        
-    }=resInfo?.cards[2]?.card?.card?.info;
+    // Show shimmer while loading
+    if (resInfo === null) return <Shimmer />;
 
-    return(
+    // Extract restaurant info
+    const { name, cuisines, costForTwoMessage } =
+        resInfo?.cards[2]?.card?.card?.info;
+
+    // Extract itemsCards
+    const itemsCards =
+        resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards || [];
+
+    console.log( itemsCards);
+
+    return (
         <div className="menu">
             <h1>{name}</h1>
-            <h4>{cuisines.join(",")}</h4>
-           
+            <h4>{cuisines?.join(", ")}</h4>
             <h4>{costForTwoMessage}</h4>
+           
+                
+            <ul>
+    {itemsCards.map((item) => (
+        <li key={item.card.info.id}>
+            {item.card.info.name} - Rs {item.card.info.price / 100}
+        </li>
+    ))}
+</ul>
 
         </div>
-    )
-}
+    );
+};
+
 export default RestaurantMenu;
