@@ -21,7 +21,7 @@ class UserClass extends React.Component{
          <button onClick={()=>{
             this.setState({
                 count:this.state.count + 1,
-                count1:this.state.count1 + 1,
+                count1:this.state.count1 + 1
             })
          }}>Button</button>
         
