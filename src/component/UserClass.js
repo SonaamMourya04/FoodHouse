@@ -5,6 +5,7 @@ class UserClass extends React.Component{
         super(props);
         console.log(props);
         this.state={count:0,
+            
             count1:2,
         }
     }
