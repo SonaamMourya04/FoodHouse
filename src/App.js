@@ -9,6 +9,11 @@ import Error from "./component/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./component/RestaurantMenu";
 
+
+//chunking
+//code splitting
+//Dynamic Bundling
+
 const AppLayout =()=>{
     return(
         <div className="app">
