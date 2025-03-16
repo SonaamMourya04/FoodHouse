@@ -3,11 +3,13 @@ import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilterRestaurant] = useState([]); // Fixed typo
   const [searchText, setSearchText] = useState("");
+
+  console.log("Body Rendered",listOfRestaurants)
 
   useEffect(() => {
     fetchData();

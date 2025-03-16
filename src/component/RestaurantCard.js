@@ -1,7 +1,8 @@
-import  {resList} from "../utils/Constants"
 import { CDN_URL } from "../utils/Constants";
+
 const RestaurantCard=(props)=>{
     const{resData}=props;
+    
     //destructering
     const{
       name,
