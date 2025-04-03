@@ -18,9 +18,10 @@ const RestaurantMenu = () => {
 
     // Extract itemsCards
     const itemsCards =
-        resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards || [];
+        resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards ;
 
-    console.log( itemsCards);
+    // console.log( itemsCards);
+    console.log( resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
 
     return (
         <div className="menu">
