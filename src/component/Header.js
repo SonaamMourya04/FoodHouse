@@ -1,6 +1,5 @@
-
+import  foodhouselogo  from "../utils/foodhouselogo.png"
 import { useState } from "react";
-import { LOGO_URL } from "../utils/Constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -13,7 +12,7 @@ const Header=()=>{
             <div className="w-50">
                 <img 
                  className="logo"
-                 src={LOGO_URL}/>
+                 src={foodhouselogo}/>
             </div>
             <div className="flex items-center">
                 <ul className="flex p-4 m-4">
