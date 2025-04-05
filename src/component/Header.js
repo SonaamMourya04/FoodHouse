@@ -8,7 +8,7 @@ const Header=()=>{
     const [btnName,setBtnName]=useState("login");
     const OnlineStatus=useOnlineStatus();
     return(
-        <div className="flex justify-between  bg-yellow-400">
+        <div className="flex justify-between bg-orange-500">
             <div className="w-50">
                 <img 
                  className="logo"
@@ -36,7 +36,7 @@ const Header=()=>{
                         </li>
                     
                     <button
-                          className="px-4"
+                          className="px-4 border-2 rounded-b-xs"
                            onClick={() => {
                 setBtnName(btnName === "login" ? "logout" : "login");
               }}

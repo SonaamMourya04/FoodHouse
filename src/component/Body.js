@@ -38,12 +38,12 @@ const Body = () => {
   }
 
   return (
-    <div className="body bg-amber-400">
+    <div className="body">
       <div className="filter  flex items-center">
         <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box border-solid bg-white"
+            className="search-box border-black bg-white"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
@@ -60,7 +60,7 @@ const Body = () => {
         </div>
         <div>
         <button
-          className="filter-btn bg-amber-50 m-4 p-4"
+          className="filter-btn bg-gray-100 rounded-xl m-4 p-4"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => (res.info.avgRating ?? 0) > 4 // Added optional chaining
