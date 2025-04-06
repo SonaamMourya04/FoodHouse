@@ -53,8 +53,7 @@ const Body = () => {
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilterRestaurant(filteredRestaurants);
-            }}
-          >
+            }}>
             Search
           </button>
         </div>
