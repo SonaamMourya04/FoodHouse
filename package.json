@@ -26,9 +26,11 @@
     "tailwindcss": "^4.0.14"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/postcss": "^4.0.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.29.0"
   }
 }
