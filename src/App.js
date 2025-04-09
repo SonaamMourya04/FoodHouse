@@ -8,6 +8,8 @@ import About from "./component/About";
 import Error from "./component/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./component/RestaurantMenu";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 
 
 
@@ -23,8 +25,11 @@ const Grocery = lazy(() => import("./component/Grocery.js"));
 const AppLayout =()=>{
     return(
         <div className="app">
-            <Header/>
-            <Outlet/>
+           <Provider store={appStore}>
+  <Header />
+  <Outlet />
+</Provider>
+          
 
         </div>
     )

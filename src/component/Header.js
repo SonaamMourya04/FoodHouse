@@ -2,11 +2,14 @@ import  foodhouselogo  from "../utils/foodhouselogo.png"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header=()=>{
 
     const [btnName,setBtnName]=useState("login");
     const OnlineStatus=useOnlineStatus();
+    //subscribing to store using a selector
+    const  cartItems= useSelector((store)=>store.cart.items);
     return(
         <div className="flex justify-between bg-orange-500">
             <div className="w-50">
@@ -31,8 +34,8 @@ const Header=()=>{
                         <li  className="px-4">
                             <Link to="/grocery">Grocery</Link>
                         </li>
-                        <li>
-                            Cart
+                        <li className="font-bold px-4 text-xl">
+                            Cart ({cartItems.length})
                         </li>
                     
                     <button
