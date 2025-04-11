@@ -1,6 +1,7 @@
 import { CDN_URL } from "../utils/Constants";
 
 const RestaurantCard=(props)=>{
+  console.log("RestaurantCard");
     const{resData}=props;
     
     //destructering

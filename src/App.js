@@ -1,7 +1,6 @@
 import React ,{lazy,Suspense}from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./component/Header";
-import RestaurantCard from "./component/RestaurantCard";
 import Body from "./component/Body";
 import Contact from "./component/Contact";
 import About from "./component/About";
@@ -10,6 +9,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./component/RestaurantMenu";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
+import Cart from "./component/Cart.js";
 
 
 
@@ -62,7 +62,11 @@ const appRouter =createBrowserRouter([
     {
         path:"restaurants/:resId",
         element:<RestaurantMenu/>
-    }],
+    },
+     {
+        path:"/cart",
+        element:<Cart/>
+     }],
         errorElement:<Error/>
 
     }
