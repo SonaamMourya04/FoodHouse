@@ -27,53 +27,53 @@ const Body = () => {
     setListOfRestaurants(restaurants);
     setFilterRestaurant(restaurants);
   };
-  if (!useOnlineStatus)
-    return (
-      <h1 style={{ textAlign: "center", color: "red", marginTop: "20px" }}>
-        ⚠️ You are offline! Please check your internet connection.
-      </h1>
-    );
+  
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
   }
 
   return (
-    <div className="body">
-      <div className="filter  flex items-center">
-        <div className="search m-4 p-4">
-          <input
-            type="text"
-            className="search-box border-black bg-white"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-          <button className="px-4  bg-green-50 rounded-lg"
+  <div className="bg-F5F5F5">
+    <div className=" px-6">
+      <div className="filter flex flex-wrap justify-center ">
+        <div className="search m-4 p-4 flex max-w-5xl">
+  <input
+    type="text"
+    className="w-[600px] text-left  text-gap px-16 py-2 border border-black rounded-l-3xl focus:outline-none"
+    value={searchText}
+    placeholder="Search a restaurant you want...."
+    onChange={(e) => setSearchText(e.target.value)}
+  />
+  <button
+    className="px-6 py-2 text-lg bg-black text-white rounded-r-3xl hover:bg-gray-800 transition-all duration-300"
+    onClick={() => {
+      const filteredRestaurants = listOfRestaurants.filter((res) =>
+        res.info.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilterRestaurant(filteredRestaurants);
+    }}
+  >
+    Search
+  </button>
+</div>
+
+
+        {/* <div className="m-4 p-4">
+          <button
+            className="filter-btn bg-gray-100 rounded-xl px-4 py-2"
             onClick={() => {
-              const filteredRestaurants = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              const filteredList = listOfRestaurants.filter(
+                (res) => (res.info.avgRating ?? 0) > 4.3
               );
-              setFilterRestaurant(filteredRestaurants);
-            }}>
-            Search
+              setFilterRestaurant(filteredList);
+            }}
+          >
+            Top Rated Restaurants
           </button>
-        </div>
-        <div>
-        <button
-          className="filter-btn bg-gray-100 rounded-xl m-4 p-4"
-          onClick={() => {
-            const filteredList = listOfRestaurants.filter(
-              (res) => (res.info.avgRating ?? 0) > 4 // Added optional chaining
-            );
-            setFilterRestaurant(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
-        </div>
-        
+        </div> */}
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center gap-10">
         {filteredRestaurant.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
             <RestaurantCard resData={restaurant} />
@@ -81,7 +81,9 @@ const Body = () => {
         ))}
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Body;

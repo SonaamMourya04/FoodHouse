@@ -10,6 +10,10 @@ import RestaurantMenu from "./component/RestaurantMenu";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
 import Cart from "./component/Cart.js";
+import TopRatedFood from "./component/TopRatedFood.js";
+import OfflineBanner from "./component/OfflineBanner.js";
+import Login from "./component/Login.js";
+import Footer from "./component/Footer.js";
 
 
 
@@ -26,9 +30,11 @@ const AppLayout =()=>{
     return(
         <div className="app">
            <Provider store={appStore}>
+              <OfflineBanner />
   <Header />
   <Outlet />
 </Provider>
+<Footer/>
           
 
         </div>
@@ -66,7 +72,15 @@ const appRouter =createBrowserRouter([
      {
         path:"/cart",
         element:<Cart/>
-     }],
+     },
+       { 
+        path: "/top-rated", 
+        element: <TopRatedFood /> 
+    },{
+        path:"/login",
+        element:<Login/>
+    }
+    ],
         errorElement:<Error/>
 
     }

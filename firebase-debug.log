@@ -1,0 +1,31 @@
+[debug] [2025-06-14T05:59:43.007Z] ----------------------------------------------------------------------
+[debug] [2025-06-14T05:59:43.013Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sonam\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-06-14T05:59:43.014Z] CLI Version:   14.7.0
+[debug] [2025-06-14T05:59:43.015Z] Platform:      win32
+[debug] [2025-06-14T05:59:43.015Z] Node Version:  v22.13.0
+[debug] [2025-06-14T05:59:43.015Z] Time:          Sat Jun 14 2025 11:29:43 GMT+0530 (India Standard Time)
+[debug] [2025-06-14T05:59:43.016Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-14T05:59:43.477Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-14T05:59:43.478Z] > authorizing via signed-in user (sonammourya7683@gmail.com)
+[debug] [2025-06-14T05:59:43.479Z] [iam] checking project foodhouse-8b803 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-06-14T05:59:43.481Z] Checked if tokens are valid: true, expires at: 1749883043161
+[debug] [2025-06-14T05:59:43.481Z] Checked if tokens are valid: true, expires at: 1749883043161
+[debug] [2025-06-14T05:59:43.483Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/foodhouse-8b803:testIamPermissions [none]
+[debug] [2025-06-14T05:59:43.483Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/foodhouse-8b803:testIamPermissions x-goog-quota-user=projects/foodhouse-8b803
+[debug] [2025-06-14T05:59:43.483Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/foodhouse-8b803:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-06-14T05:59:45.793Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/foodhouse-8b803:testIamPermissions 200
+[debug] [2025-06-14T05:59:45.794Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/foodhouse-8b803:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-06-14T05:59:45.795Z] Checked if tokens are valid: true, expires at: 1749883043161
+[debug] [2025-06-14T05:59:45.795Z] Checked if tokens are valid: true, expires at: 1749883043161
+[debug] [2025-06-14T05:59:45.796Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/foodhouse-8b803 [none]
+[debug] [2025-06-14T05:59:46.561Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/foodhouse-8b803 200
+[debug] [2025-06-14T05:59:46.561Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/foodhouse-8b803 {"projectId":"foodhouse-8b803","projectNumber":"534689145471","displayName":"FoodHouse","name":"projects/foodhouse-8b803","resources":{"hostingSite":"foodhouse-8b803"},"state":"ACTIVE","etag":"1_a225c5e6-aadb-4418-8a68-674e52ed7feb"}
+[info] 
+[info] === Deploying to 'foodhouse-8b803'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-06-14T05:59:46.574Z] Checked if tokens are valid: true, expires at: 1749883043161
+[debug] [2025-06-14T05:59:46.574Z] Checked if tokens are valid: true, expires at: 1749883043161
+[debug] [2025-06-14T05:59:46.575Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/foodhouse-8b803/versions [none]
+[debug] [2025-06-14T05:59:46.575Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/foodhouse-8b803/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}

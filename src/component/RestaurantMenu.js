@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestarauntMenu from "../utils/useRestarauntMenu";
@@ -7,46 +7,46 @@ import RestaurantCategory from "./RestaurantCategories.js";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestarauntMenu(resId);
-  const[showIndex , setShowIndex]= useState( 0);
+  const [showIndex, setShowIndex] = useState(0);
 
-  // Show shimmer while loading
   if (resInfo === null) return <Shimmer />;
 
   // Extract restaurant info
-  const { name, cuisines, costForTwoMessage } =
-    resInfo?.cards[2]?.card?.card?.info;
+  const restaurant = resInfo?.cards[2]?.card?.card?.info;
+  const { name, cuisines, costForTwoMessage, cloudinaryImageId, areaName, avgRating } = restaurant;
 
-  // Extract itemsCards
-  const itemsCards =
-    resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      ?.card?.itemCards;
-
-  // console.log( itemsCards);
-  console.log(resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+  // Extract categories
   const categories =
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  console.log("categories"-categories);
 
   return (
-    <div className="text-center">
-      <h1 className="font-bold my-6 text-2xl">{name}</h1>
-      <p className="font-bold text-lg">
-        {cuisines?.join(", ")}-{costForTwoMessage}
-      </p>
-{/* categories accordions */}
+    <div className="text-center p-4">
+      {/* Restaurant Info */}
+      <div className="flex flex-col items-center mb-6">
+        <img
+          className="w-64 h-40 object-cover rounded-xl shadow-md mb-4"
+          src={`https://media-assets.swiggy.com/swiggy/image/upload/${cloudinaryImageId}`}
+          alt={name}
+        />
+        <h1 className="text-3xl font-bold">{name}</h1>
+        <p className="text-gray-600">{cuisines?.join(", ")}</p>
+        <p className="text-gray-600">{areaName} • {costForTwoMessage}</p>
+        <p className="text-yellow-600 font-semibold">⭐ {avgRating} Rating</p>
+      </div>
 
-   { categories.map((category,index)=> (
-    <RestaurantCategory 
-    key={category?.card?.card.title}
-     data={category?.card?.card}
-     showItems={index=== showIndex ? true : false}
-     setShowIndex={()=>setShowIndex(index)}
-     />
-     ))}
+      {/* Category Accordions */}
+      {categories.map((category, index) => (
+        <RestaurantCategory
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+          showItems={index === showIndex}
+          setShowIndex={() => setShowIndex(index)}
+        />
+      ))}
     </div>
   );
 };
