@@ -4,36 +4,57 @@ const groceries = [
     id: 1,
     name: "Fresh Tomatoes",
     image:
-      "https://cdn.pixabay.com/photo/2016/03/05/19/02/tomatoes-1238252_960_720.jpg",
+      "https://www.tasteofhome.com/wp-content/uploads/2018/05/GettyImages-1043681048.jpg?w=1200",
     price: "₹40/kg",
   },
   {
     id: 2,
     name: "Onions",
     image:
-      "https://cdn.pixabay.com/photo/2017/05/07/08/56/onions-2291323_960_720.jpg",
+      "https://wallpaperaccess.com/full/1912930.jpg",
     price: "₹25/kg",
   },
   {
     id: 3,
     name: "Potatoes",
     image:
-      "https://cdn.pixabay.com/photo/2018/01/28/12/12/potatoes-3114629_960_720.jpg",
+      "https://www.photos-public-domain.com/wp-content/uploads/2010/11/potatoes.jpg",
     price: "₹30/kg",
   },
   {
     id: 4,
     name: "Milk",
     image:
-      "https://cdn.pixabay.com/photo/2017/05/23/22/36/milk-2332234_960_720.jpg",
+      "https://tse4.mm.bing.net/th?id=OIP.4rsDhxmkzmOBVBiPyijHswHaFX&pid=Api&P=0&h=180",
     price: "₹60/litre",
   },
   {
     id: 5,
     name: "Eggs",
     image:
-      "https://cdn.pixabay.com/photo/2015/05/07/14/24/eggs-756603_960_720.jpg",
+      "https://cdn.britannica.com/94/151894-050-F72A5317/Brown-eggs.jpg",
     price: "₹5/egg",
+  },
+  {
+    id: 6,
+    name: "Apples",
+    image:
+      "https://tse4.mm.bing.net/th?id=OIP.3oUCksZmXiUt0wPDLxwQugHaE7&pid=Api&P=0&h=180",
+    price: "₹90/kg",
+  },
+  {
+    id: 7,
+    name: "panner",
+    image:
+      "https://www.pragatimilk.com/PragatiMilkImages/ProductImages/paneer-five-hundred-g-poly-pragati-milk.png",
+    price: "₹60/200gm",
+  },
+  {
+    id: 8,
+    name: "Cashew",
+    image:
+      "https://5.imimg.com/data5/SELLER/Default/2021/12/DV/PH/XG/41322576/packed-cashew-nuts-1000x1000.jpg",
+    price: "₹100/kg",
   },
 ];
 
