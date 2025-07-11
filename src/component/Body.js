@@ -2,30 +2,43 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import { RESTAURANTS_API_URL } from "../utils/Constants";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilterRestaurant] = useState([]); // Fixed typo
   const [searchText, setSearchText] = useState("");
 
-  console.log("Body Rendered",listOfRestaurants)
-
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.545246&lng=77.2941132&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json);
+    try {
+      // Fetch meal categories from TheMealDB
+      const data = await fetch(RESTAURANTS_API_URL);
+      const json = await data.json();
+      // Transform categories to look like restaurants
+      const restaurants = json.categories?.map((category) => ({
+        info: {
+          id: category.idCategory,
+          name: category.strCategory,
+          cloudinaryImageId: category.strCategoryThumb,
+          cuisines: [category.strCategory],
+          areaName: category.strArea || "Food Category", // Use API area if available
+          costForTwo: "₹200 for two",
+          avgRating: (4.0 + Math.random()).toFixed(1), // Random rating between 4.0-5.0
+          description: category.strCategoryDescription
+        }
+      })) || [];
 
-    const restaurants =
-      json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-    setListOfRestaurants(restaurants);
-    setFilterRestaurant(restaurants);
+      setListOfRestaurants(restaurants);
+      setFilterRestaurant(restaurants);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setListOfRestaurants([]);
+      setFilterRestaurant([]);
+    }
   };
   
   if (listOfRestaurants.length === 0) {
@@ -33,56 +46,56 @@ const Body = () => {
   }
 
   return (
-  <div className="bg-F5F5F5">
-    <div className=" px-6">
-      <div className="filter flex flex-wrap justify-center ">
-        <div className="search m-4 p-4 flex max-w-5xl">
-  <input
-    type="text"
-    className="w-[600px] text-left  text-gap px-16 py-2 border border-black rounded-l-3xl focus:outline-none"
-    value={searchText}
-    placeholder="Search a restaurant you want...."
-    onChange={(e) => setSearchText(e.target.value)}
-  />
-  <button
-    className="px-6 py-2 text-lg bg-black text-white rounded-r-3xl hover:bg-gray-800 transition-all duration-300"
-    onClick={() => {
-      const filteredRestaurants = listOfRestaurants.filter((res) =>
-        res.info.name.toLowerCase().includes(searchText.toLowerCase())
-      );
-      setFilterRestaurant(filteredRestaurants);
-    }}
-  >
-    Search
-  </button>
-</div>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
+      {/* Hero Section */}
+      <div className="py-8">
+        <div className="max-w-6xl mx-auto text-center px-4">
+          <h1 className="text-3xl font-bold mb-2 drop-shadow-lg">
+            🍕 Delicious Food Delivered Fast
+          </h1>
+          <p className="text-lg mb-6 text-gray-700">
+            Discover amazing restaurants and order your favorite meals
+          </p>
 
-
-        {/* <div className="m-4 p-4">
-          <button
-            className="filter-btn bg-gray-100 rounded-xl px-4 py-2"
-            onClick={() => {
-              const filteredList = listOfRestaurants.filter(
-                (res) => (res.info.avgRating ?? 0) > 4.3
-              );
-              setFilterRestaurant(filteredList);
-            }}
-          >
-            Top Rated Restaurants
-          </button>
-        </div> */}
+          {/* Enhanced Search Bar */}
+          <div className="flex items-center justify-center max-w-2xl mx-auto">
+            <div className="relative flex w-full shadow-2xl border-2 border-gray-300 rounded-2xl overflow-hidden">
+              <input
+                type="text"
+                className="w-full px-6 py-4 text-gray-700 text-lg focus:outline-none bg-white/95 backdrop-blur-sm"
+                value={searchText}
+                placeholder="🔍 Search restaurants, cuisines, dishes..."
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+              <button
+                className="px-8 py-4 text-lg bg-white text-gray-700 hover:bg-gray-50 transition-all duration-300 font-semibold border-l border-gray-300"
+                onClick={() => {
+                  const filteredRestaurants = listOfRestaurants.filter((res) =>
+                    res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                  );
+                  setFilterRestaurant(filteredRestaurants);
+                }}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-10">
-        {filteredRestaurant.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
-            <RestaurantCard resData={restaurant} />
-          </Link>
-        ))}
+      {/* Restaurant Cards Section */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Restaurant Cards Grid */}
+        <div className="flex flex-wrap justify-center gap-6">
+          {filteredRestaurant.map((restaurant) => (
+            <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+              <RestaurantCard resData={restaurant} />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 
 };
 

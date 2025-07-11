@@ -29,7 +29,7 @@ const RestaurantMenu = () => {
       <div className="flex flex-col items-center mb-6">
         <img
           className="w-64 h-40 object-cover rounded-xl shadow-md mb-4"
-          src={`https://media-assets.swiggy.com/swiggy/image/upload/${cloudinaryImageId}`}
+          src={cloudinaryImageId} // TheMealDB provides full URLs
           alt={name}
         />
         <h1 className="text-3xl font-bold">{name}</h1>

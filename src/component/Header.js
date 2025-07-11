@@ -1,39 +1,37 @@
 import foodhouselogo from "../utils/foodhouselogo.png";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const isOnline = useOnlineStatus();
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="flex justify-between items-center bg-orange-300 px-6 py-4 shadow-md sticky top-0 z-50">
+    <div className="flex justify-between items-center bg-orange-500 px-6 py-8 shadow-2xl sticky top-0 z-50">
       {/* Logo + Name */}
       <div className="flex items-center space-x-4">
         <img
-          className="w-35 h-35 object-contain rounded-full"
+          className="w-35 h-35 rounded-full shadow-lg"
           src={foodhouselogo}
           alt="Food House Logo"
         />
-        <span className="text-xl font-bold text-orange-900">FoodHouse</span>
+        <div>
+          
+        </div>
+        
       </div>
 
       {/* Nav Links */}
-      <ul className="flex space-x-6 items-center text-lg font-semibold text-gray-800">
+      <ul className="flex space-x-6 items-center text-lg font-semibold text-white">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className="hover:text-yellow-300 transition-colors duration-200 hover:scale-105 transform">Home</Link>
         </li>
         <li>
-          <Link to="/about">About Us</Link>
+          <Link to="/about" className="hover:text-yellow-300 transition-colors duration-200 hover:scale-105 transform">About Us</Link>
         </li>
         <li>
-          <Link to="/contact">Contact Us</Link>
+          <Link to="/contact" className="hover:text-yellow-300 transition-colors duration-200 hover:scale-105 transform">Contact Us</Link>
         </li>
-        <li>
-          <Link to="/grocery">Grocery</Link>
-        </li>
+      
         
 
         {/* Cart Icon with Item Count */}

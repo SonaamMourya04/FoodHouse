@@ -1,4 +1,3 @@
-import React ,{lazy,Suspense}from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./component/Header";
 import Body from "./component/Body";
@@ -16,76 +15,55 @@ import Login from "./component/Login.js";
 import Footer from "./component/Footer.js";
 
 
-
-
-//chunking
-//code splitting
-//Dynamic Bundling
-//on demand loading
-//lazy loading
-const Grocery = lazy(() => import("./component/Grocery.js"));
-
-
-const AppLayout =()=>{
-    return(
-        <div className="app">
-           <Provider store={appStore}>
-              <OfflineBanner />
-  <Header />
-  <Outlet />
-</Provider>
-<Footer/>
-          
-
-        </div>
-    )
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Provider store={appStore}>
+        <OfflineBanner />
+        <Header />
+        <Outlet />
+      </Provider>
+      <Footer />
+    </div>
+  );
 };
-const appRouter =createBrowserRouter([
-    {
-        path:"/",
-        element:<AppLayout/>,
-        children:[
-            {
-                path:"/",
-                element:<Body/>
-            },
-            
-            {
-            path:"/about",
-            element:<About/>
-    
-        },
-        
-       {
-        path:"/contact",
-        element:<Contact/>
-       },
-       {
-        path:"/grocery",
-        element:<Suspense fallback={<h1>loading...</h1>}><Grocery/></Suspense>// wraping grocery in suspense so data get available before 12 millisecond and it get rens=der
-
-    },
-    {
-        path:"restaurants/:resId",
-        element:<RestaurantMenu/>
-    },
-     {
-        path:"/cart",
-        element:<Cart/>
-     },
-       { 
-        path: "/top-rated", 
-        element: <TopRatedFood /> 
-    },{
-        path:"/login",
-        element:<Login/>
-    }
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
+      },
+      {
+        path: "restaurants/:resId",
+        element: <RestaurantMenu />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
+      },
+      {
+        path: "/top-rated",
+        element: <TopRatedFood />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      }
     ],
-        errorElement:<Error/>
-
-    }
-    
-])
+    errorElement: <Error />
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(< RouterProvider router={appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);
